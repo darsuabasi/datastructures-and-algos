@@ -1,0 +1,24 @@
+{
+  "name": "Pursuit-Core-Web-Objects-Lab",
+  "version": "1.0.0",
+  "description": "Fork and clone this repo. On your fork, answer and commit the follow questions. When you are finished, submit the link to your repo on Canvas.",
+  "main": "lab.js",
+  "scripts": {
+    "test": "jest --runInBand tests/",
+    "bonus": "jest --runInBand bonus/bonus.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joinpursuit/Pursuit-Core-Web-Objects-Lab.git"
+  },
+  "keywords": [],
+  "author": "Corey Ladovsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joinpursuit/Pursuit-Core-Web-Objects-Lab/issues"
+  },
+  "homepage": "https://github.com/joinpursuit/Pursuit-Core-Web-Objects-Lab#readme",
+  "dependencies": {
+    "jest": "^26.5.3"
+  }
+}
