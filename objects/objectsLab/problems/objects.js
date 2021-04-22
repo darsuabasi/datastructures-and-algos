@@ -259,18 +259,21 @@ const bestScore = (submissions) => {
 };
 
 
-// Question Four
-// You are given an array of objects. Each object in the array describes the score of a person. Find the person with the best score and print his full name.
-
-
-
 /**
  * Returns an object where the keys are numbers 1 through 20,
  * and their respective values is key cubed (num * num * num).
  * @returns {Object} {1: 1, 2: 8, 3: 27...}
  */
 
-const cubeObj = () => {};
+const cubeObj = () => {
+  let obj = {}
+
+  for (let i = 1; i <= 20; i++) {
+    obj[i] = Math.pow(i, 3);
+  }
+  return obj
+};
+
 
 /**
  * Takes in a string and returns an object with
@@ -279,9 +282,17 @@ const cubeObj = () => {};
  * @returns {Object} Counts of e and a. {a: 2, e: 1}
  */
 
-const countAandE = (str) => {
+ // if(stringReset.includes("e")) {
+  //   eBank +1
+  // }
+  // if(stringReset.includes("a")) {
+  //   aBank = +1 
+  // }
 
-};
+const countAandE = (str) => {
+  
+}
+
 
 /**
  * Takes in a string and returns an object with
@@ -290,7 +301,21 @@ const countAandE = (str) => {
  * @returns {Object} Counts of all characters: {a: 2, g: 1, o: 2, d:1, " ": 2, s: 1, n:1, k:1, e: 1}
  */
 
-const countOccurance = () => {};
+const countOccurance = (str) => {
+  let countBank = {};
+
+  for(let i = 0; i < str.length; i++) {
+    let resetStr = str.toLowerCase()
+    let character = resetStr.charAt(i);
+    
+    if(countBank[character]) {
+      countBank[character]++;
+    } else {
+      countBank[character] = 1;
+    }
+  }
+  return countBank;
+};
 
 /**
  * Takes in a string and returns an object with
@@ -300,7 +325,21 @@ const countOccurance = () => {};
  * @returns {Object} Counts all characters except spaces  {a: 2, g: 1, o: 2, d:1, s: 1, n:a, k:1, e: 1}
  */
 
-const countOccuranceNoSpaces = () => {};
+const countOccuranceNoSpaces = (str) => {
+  // let freq = {};
+
+  // for(let i = 0; i < str.length; i++) {
+  //   let character = str.charAt(i);
+
+  //   if (freq[character]) {
+  //     freq[character]++;
+  //   } else {
+  //     freq[character] = 1;
+  //   }
+  // }
+  // return freq;
+};
+
 
 /**
  * Takes in an array and returns the most common element.
