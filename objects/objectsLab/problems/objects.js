@@ -290,7 +290,23 @@ const cubeObj = () => {
   // }
 
 const countAandE = (str) => {
-  
+  let aBank = 0;
+  let eBank = 0;
+  let eaBank = {};
+  let strResetCaps = str.toLowerCase();
+  let strResetLetters = strResetCaps.split('');
+
+  for(let i = 0; i < strResetLetters.length; i++) {
+    if(strResetLetters[i] === "a") {
+      aBank = aBank + 1
+    }
+    if(strResetLetters[i] === "e") {
+      eBank = eBank + 1
+    }
+  }
+  eaBank.a = aBank;
+  eaBank.e = eBank;
+  return eaBank
 }
 
 
@@ -303,11 +319,10 @@ const countAandE = (str) => {
 
 const countOccurance = (str) => {
   let countBank = {};
-
   for(let i = 0; i < str.length; i++) {
     let resetStr = str.toLowerCase()
     let character = resetStr.charAt(i);
-    
+
     if(countBank[character]) {
       countBank[character]++;
     } else {
@@ -326,18 +341,9 @@ const countOccurance = (str) => {
  */
 
 const countOccuranceNoSpaces = (str) => {
-  // let freq = {};
-
-  // for(let i = 0; i < str.length; i++) {
-  //   let character = str.charAt(i);
-
-  //   if (freq[character]) {
-  //     freq[character]++;
-  //   } else {
-  //     freq[character] = 1;
-  //   }
-  // }
-  // return freq;
+  let setObject = countOccurance(str)
+  delete setObject[" "]
+  return setObject
 };
 
 
