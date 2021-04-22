@@ -353,7 +353,29 @@ const countOccuranceNoSpaces = (str) => {
  * @returns {(number|string)} Most common element
  */
 
-const mostCommonElement = () => {};
+const mostCommonElement = (array) => {
+  let outputObj = {}; 
+  for(let i = 0; i < array.length; i++) {
+    if(outputObj[array[i]]) {
+      outputObj[array[i]] = outputObj[array[i]] + 1
+    } else {
+    outputObj[array[i]] = 1
+    }
+  }
+  let maxCommonNum = 0;
+  let maxCommonEl = "";
+
+  for(let key in outputObj) {
+    if(outputObj[key] > maxCommonNum) {
+      maxCommonNum = outputObj[key];
+      maxCommonEl = key;
+    }
+  }
+  if (Number(maxCommonEl)) {
+    maxCommonEl = Number(maxCommonEl)
+  }
+  return maxCommonEl
+};
 
 /**
  * Takes in an object and an array.
@@ -373,7 +395,9 @@ const mostCommonElement = () => {};
  * @returns {string[]} Elements or their pair values.
  */
 
-const updateList = (pairs) => {};
+const updateList = (pairs, arr) => {
+
+};
 
 /**
  * Takes in an object and a key.
@@ -384,7 +408,18 @@ const updateList = (pairs) => {};
  * @returns {Object} The Object without the key.
  */
 
- const deleteKey = (key) => {};
+ const deleteKey = (obj, key) => {
+
+  //  key is already a param
+  //  for(let key in obj) {
+  //    if(obj[key] === null) {
+  //     delete obj[key]
+  //    }
+  //  }
+  //  return obj
+  delete obj[key]
+  return obj
+};
 
 
  /**
@@ -393,7 +428,14 @@ const updateList = (pairs) => {};
   * @param {Object} obj
   * @returns {number} Number of properties.
   */
- const propertyCount = () => {};
+ const propertyCount = (obj) => {
+   let counter = 0;
+
+   for(let key in obj) {
+      counter = counter + 1
+   }
+   return counter
+ };
 
 module.exports = {
   eveAppleCount,
