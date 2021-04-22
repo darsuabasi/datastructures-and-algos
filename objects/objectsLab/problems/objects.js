@@ -230,17 +230,39 @@ const authorScores = (authors) => {
  * @returns {string} The full name of person with best score.
  */
 
-const bestScore = (submissions) => {
-  submissions.forEach((person => {
-    console.log(score)
-  }))
+// const bestScore = (submissions) => {
+//   let highestScoringName = ""
+//   let largestScore = submissions[0]["score"]
 
+//   for (let i = 0; i < submissions.length; i ++) {
+//     if(submissions[i].score > largestScore) {
+//         largestScore = submissions[i]["score"]
+//         highestScoringName = submissions[i].firstName + " " + submissions[i].lastName
+//     }
+//   }
+//   return highestScoringName
+// }
+
+
+
+const bestScore = (submissions) => {
+  let maxScoringName = "";
+  let maxScore = submissions[0]["score"]
+
+  submissions.forEach(submission => {
+    if(submission.score > maxScore) {
+      maxScore = submission["score"]
+      maxScoringName = submission.firstName + " " + submission.lastName
+    }
+  });
+  return maxScoringName
 };
 
 
-// array.sort(function(a, b) {
-//   return a.age - b.age;
-// }); // Sort youngest first
+// Question Four
+// You are given an array of objects. Each object in the array describes the score of a person. Find the person with the best score and print his full name.
+
+
 
 /**
  * Returns an object where the keys are numbers 1 through 20,
