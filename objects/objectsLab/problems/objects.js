@@ -396,7 +396,26 @@ const mostCommonElement = (array) => {
  */
 
 const updateList = (pairs, arr) => {
+  let newArr = [];
 
+  // for(let el in pairs[arr]) {
+  //   if(pairs[arr[el]]) {
+  //     newArr.push(pairs[arr[el]])
+  //   } else {
+  //     newArr.push(arr[el])
+  //   }
+  // }
+  // return newArr
+
+  for(let i = 0; i < arr.length; i++) {
+    if(pairs[arr[i]]) {
+      newArr.push(pairs[arr[i]])
+    } else {
+      newArr.push(arr[i])
+    }
+  }
+  return newArr
+  console.log(newArr)
 };
 
 /**
