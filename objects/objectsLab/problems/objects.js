@@ -395,6 +395,8 @@ const mostCommonElement = (array) => {
  * @returns {string[]} Elements or their pair values.
  */
 
+//  time complexity is linear
+
 const updateList = (pairs, arr) => {
   let newArr = [];
 
@@ -427,6 +429,7 @@ const updateList = (pairs, arr) => {
  * @returns {Object} The Object without the key.
  */
 
+//  time complexity is linear
  const deleteKey = (obj, key) => {
 
   //  key is already a param
@@ -447,6 +450,8 @@ const updateList = (pairs, arr) => {
   * @param {Object} obj
   * @returns {number} Number of properties.
   */
+
+  // time complexity is linear
  const propertyCount = (obj) => {
    let counter = 0;
 
