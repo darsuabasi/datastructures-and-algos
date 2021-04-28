@@ -1,0 +1,14 @@
+Why use linked list?
+- grow and shrink collection with ease
+- space doesn't have to be continuous 
+
+Tradeoff
+- linked list doesnt have indicies (arr[i])
+
+In C++, you need to provide a location in memory for each variable
+
+
+when you push el to arr, that's constant time but some take o(n) ---> this is rare
+
+
+
