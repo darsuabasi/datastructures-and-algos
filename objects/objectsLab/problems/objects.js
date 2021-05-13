@@ -24,7 +24,7 @@ const eveAppleCount = (appleCountByName) => {
  * bracket notation? Try them both.
  */
 
-// COMPUTED PROPERY ---> figure out value first and then use thatt to key into obj
+// COMPUTED PROPERY ---> figure out value first and then use that to key into obj
 
 // Dot notation is faster and more readable, but has more limitations. 
 // Bracket notation allows access to property names stored in a variable, 

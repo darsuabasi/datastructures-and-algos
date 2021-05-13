@@ -14,26 +14,28 @@ class Node {
   node1.next = node2; // 1 -> 2 -> null
   node2.next = node3; // 1 -> 2 -> 3 -> null
   node3.next = node4;
+
+
   
-  const includes = (node, target) => {
-    let current = node;
   
-    if (!node) return false;
   
-    while(current !== null) {
-      if(current.value === target) {
-        return true 
-      } else {
-        current = current.next
-      }
-      
+const includes = (node, target) => {
+  let current = node;
+  
+  if (!node) return false;
+
+  while(current !== null) {
+    if(current.value === target) {
+      return true 
+    } else {
+      current = current.next
     }
-    return false
-  
   }
+  return false
+}
   
-  console.log(includes(node1, 100)) // True
-  console.log(includes(node1, 200)) // False
+console.log(includes(node1, 100)) // True
+console.log(includes(node1, 200)) // False
   
   
   // go through the linklist 
