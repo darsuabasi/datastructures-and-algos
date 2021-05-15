@@ -32,23 +32,23 @@
 const isBalanced = (input) => {
   
   let stack = [];
-  let bank = {
-    "(": ")",
-    "{": "}", 
-    "[": "]",
-  }
+  // let bank = {
+  //   "(": ")",
+  //   "{": "}", 
+  //   "[": "]",
+  // }
 
   for(let i = 0; i < input.length; i++ ) {
-    // if input is open; + to that stack 
+    let character = stack[stack .length - 1]
+
     if(input[i] === "(" || input[i] === "{" || input[i] === "[") {
       stack.push(input[i])
-    } else {
-      let last = stack.pop();
-      if(input[i] !== (bank[last])) return false;
-    }
+    } else if((character == "(" && input[i] == ")" || character == "{" && input[i] == "}" || character == "[" && input[i] == "]")) {
+      stack.pop();
+    } else return false 
   } 
-  if(stack.length !== 0) return false;
-  return true
+  // if(stack.length !== 0) return false;
+  return stack.length ? false : true 
 }
 
 // Input : {[]{()}}
@@ -66,8 +66,8 @@ const isBalanced = (input) => {
 // Input: {[()]}
 // Output: Balanced = true
 
-console.log(isBalanced("{[]{()}}"))
-console.log(isBalanced("[{}{}(]"))
-console.log(isBalanced("[{}{}(])"))
-console.log(isBalanced("{[][[}"))
-console.log(isBalanced("{[()]}"))
+console.log(isBalanced("{[]{()}}")) // true
+console.log(isBalanced("[{}{}(]")) // false 
+console.log(isBalanced("[{}{}(])")) // false 
+console.log(isBalanced("{[][[}")) // false 
+console.log(isBalanced("{[()]}")) // true 
