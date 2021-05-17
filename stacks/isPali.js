@@ -1,57 +1,31 @@
-// class Stack {
+const Stack = require('./Stack')
 
-//     constructor() {
-//         this.arr = [];
-//     }
 
-//     push(value) {
-//         this.arr.push(value);
-//     }
+// const isPali = (string) => { 
+//     let stack = new Stack
+//     let paliArray = string.split(/[\s!.?,;:'"-()]/ig);
 
-//     pop() {
-//         return this.arr.pop();
-//     }
-
-//     peek() {
-//         // Get Last Index based on length
-//         const lastIndex = this.arr.length - 1;
-
-//         // Return value
-//         return this.arr[lastIndex];
-//     }
-
-//     isEmpty() {
-//         // Check if array length is zero
-//         return this.arr.length === 0;
+//     for (i = 0; i < paliArray.length; i++) {
+//         if (paliArray[i].toLowerCase() === paliArray[i].split('').reverse().join('').toLowerCase() &&
+//             paliArray[i] !== '') {
+//             stack.push(paliArray[i]);
+//             return "The word `" + stack + "` is a palindrome!";
+//         } else {
+//             return paliArray + " is NOT a palindrome."
+//         }
 //     }
 // }
 
-
-const isPali = (string) => { 
-    let stack = []
-    let paliArray = string.split(/[\s!.?,;:'"-()]/ig);
-
-    for (i = 0; i < paliArray.length; i++) {
-        if (paliArray[i].toLowerCase() === paliArray[i].split('').reverse().join('').toLowerCase() &&
-            paliArray[i] !== '') {
-            stack.push(paliArray[i]);
-            return "The word `" + stack + "` is a palindrome!";
-        } else {
-            return paliArray + " is NOT a palindrome."
-        }
-    }
-}
-
 const isPaliTwo = (string) => { 
-    let letters = []; 
+    let stack = new Stack(); 
     let reversed = ""; //store the reversed word
 
     for(let i = 0; i < string.length; i++){
-        letters.push(string[i]);
+        stack.push(string[i]);
     }
 
-    for(let i = 0; i < string.length; i++){
-        reversed += letters.pop();
+    while(!stack.isEmpty()) {
+        reversed += stack.pop()
     }
 
     if(reversed === string){

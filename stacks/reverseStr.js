@@ -1,47 +1,26 @@
-// class Stack {
+// charAt() method returns the character from the specified index
+// abstract = (an idea) data structure
 
-//     constructor() {
-//         this.arr = [];
-//     }
+const Stack = require('./Stack')
 
-//     push(value) {
-//         this.arr.push(value);
-//     }
 
-//     pop() {
-//         return this.arr.pop();
-//     }
+const reverseStr = (string) => {
+    let stack = new Stack();
 
-//     peek() {
-//         // Get Last Index based on length
-//         const lastIndex = this.arr.length - 1;
+    let i = 0;
+    let reversed = "";
 
-//         // Return value
-//         return this.arr[lastIndex];
-//     }
-
-//     isEmpty() {
-//         // Check if array length is zero
-//         return this.arr.length === 0;
-//     }
-// }
-
-// loop through string and then push each character into the stack 
-// then pop (which removes element from TOP of stack) each character 
-//  which is then added to the new string 
-const reverseStr = (str) => {
-    let stack = [];
-    let reverseString = '';
-
-    for(let i = 0; i < str.length; i++) {
-        if(str.length) {
-            stack.push(str[i])
-        }
+    // add chars to stack 
+    while(i !== string.length) {
+        stack.push(string[i]);
+        i++
     }
-    while(stack.length > 0) {
-        reverseString += stack.pop()
+
+    // reversing string by popping from stack
+    while(!stack.isEmpty()) {
+        reversed += stack.pop();
     }
-    return reverseString
+    return reversed
 }
 
 console.log(reverseStr("genesis"))
