@@ -69,7 +69,12 @@ class stackWithLinkLists {
   
     //Checking if stack is empty
     isEmpty = () => {
-        return this.length === 0;
+        // return this.length === 0;
+        if(this.length === 0) {
+            return true
+        } else {
+            return false
+        }
     }
   
     //Returning the size of stack
