@@ -1,0 +1,6 @@
+3 ingredients to recursion
+- basecase (when to stop/simplest case where you immediatley know answer)
+- recursive call (often happens on the same line as inductive step)
+- inductive step (means of progression towards basecase)
+
+
