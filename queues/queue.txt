@@ -1,15 +1,19 @@
 A queue is an ordered collection of data in which data is stored in FIFO (First In First Out) order.
 
+"standard" methods
 enqueue: Adds new data at the end of the queue.
 dequeue: Removes data from the front of the queue and returns it.
-front: Returns the first data from the front of the queue.
+front/peek: Returns the first data from the front of the queue.
+isEmpty: returns whether empty or not
+
+
+clear: Clears the queue.
 rear: Returns the first data from the end of the queue.
 toArray: Returns the queue as the array.
 size: Returns the length of the queue.
 isEmpty: Returns true if queue is empty, false otherwise.
-clear: Clears the queue.
 
-
+***** when there is a single el in linked list, both head and tail point to it
 
 
 
