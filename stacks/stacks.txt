@@ -1,0 +1,124 @@
+a stack is a limited access data structure 
+
+fundamentals
+--------------
+1. when you add a new element, it goes to the top
+2. when you remove element, its removed from top only
+
+LIFO
+"last in, first out"
+
+only 2 operations allowed = push into stack, pop out of stack 
+*Just like in the physical world, if you tried to pull out a dish from the middle it would all come crashing.*
+
+
+
+Stack Use Cases
+    *real world applications of stacks:
+
+        - Back & Forward button on Web Browsers.
+        - Reversing a word. You push a word letter by letter, then pop letters from the stack.
+        - Undo mechanism. Example, undo in a text editor.
+        - Syntax checking for compilers. Example, checking for parentheses and braces.
+        - Memory allocation uses stacks at the architectural level. 
+            Memory for local variables is also managed using a stack.
+
+
+Stack Methods
+    - push(value) : Add new element to the top of the stack.
+    - pop() : Remove element from top of the stack and return it.
+    - peek() : Returns the top element of the stack without removing it.
+    - isEmpty() : Returns a boolean indicating if the stack is empty or not.
+
+Stack Implementation
+    - There are two ways of implementing Stacks [both fundementally tackle the same problems]
+        1. using a linked list [considered the traditional way] 
+        2. using an array [much simpler way]
+
+Container Class
+
+class Stack {
+    constructor() {
+        this.arr = [];
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------
+Don't want to initialize a stack with any value. 
+    * The only important member property of the class is an Array to hold our elements.
+
+    push(value)
+    - Add a new element to the END of the stack.
+
+    push(value) {
+        this.arr.push(value);
+    }
+--------------------------------------------------------------------------------------------   
+    pop()
+    - To remove and return the last element, which is also very simple using Arrays.
+
+    pop() {
+        return this.arr.pop();
+    }
+-------------------------------------------------------------------------------------------- 
+    peek()
+    - Access the element on top of the stack.
+
+    peek() {
+        // Get Last Index based on length
+        const lastIndex = this.arr.length - 1;
+
+        // Return value
+        return this.arr[lastIndex];
+    }
+-------------------------------------------------------------------------------------------- 
+    isEmpty()
+    - Check if the stack is empty.
+
+    isEmpty() {
+        // Check if array length is zero
+        return this.arr.length === 0;
+    }
+--------------------------------------------------------------------------------------------
+Putting it all Together
+    class Stack {
+
+        constructor() {
+            this.arr = [];
+        }
+
+        push(value) {
+            this.arr.push(value);
+        }
+
+        pop() {
+            return this.arr.pop();
+        }
+
+        peek() {
+            // Get Last Index based on length
+            const lastIndex = this.arr.length - 1;
+
+            // Return value
+            return this.arr[lastIndex];
+        }
+
+        isEmpty() {
+            // Check if array length is zero
+            return this.arr.length === 0;
+        }
+    }
+As you can see, pretty simple right? Stacks are simple to conceptualize and code once you understand the fundementals.
+----------------------------------------------------------------------------------------------------------------------
+Excercises
+Write a function reverseStr that reverse a string using a stack. Return the reversed strings. You might not reverse the string using other methods that do not involve a stack instance.
+Solve validParentheses using an instance of your stack. This problem is also in HackerRank as Balanced Brackets
+Solve isPalindrome. You can also do it in HackerRank
+Solve removeAdjacentDups using a Stack.
+Implement a Stack using a Linked Lists. You may not use any Array or built in Array methods. Your stack should have the standard stack methods
+push(value): Add new element to the top of the stack.
+pop(): Remove element from top of the stack and return it.
+peek(): Returns the top element of the stack without removing it.
+isEmpty(): Returns a boolean indicating if the stack is empty or not.
+
+
