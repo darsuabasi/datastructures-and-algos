@@ -1,45 +1,37 @@
-// class Stack {
-
-//     constructor() {
-//         this.arr = [];
-//     }
-
-//     push(value) {
-//         this.arr.push(value);
-//     }
-
-//     pop() {
-//         return this.arr.pop();
-//     }
-
-//     peek() {
-//         // Get Last Index based on length
-//         const lastIndex = this.arr.length - 1;
-
-//         // Return value
-//         return this.arr[lastIndex];
-//     }
-
-//     isEmpty() {
-//         // Check if array length is zero
-//         return this.arr.length === 0;
-//     }
-// }
+const Stack = require('./Stack')
 
 // Process: { -> [ -> ( -> ) -> ] -> () -> }
 
 
+// Define a stack which is an array.
+
+// Loop through each element in a given string.
+
+// If the element is an opening bracket (‘(‘ or ‘{‘ or ‘[‘), push it onto the stack.
+
+// If the element is a closing bracket (‘)‘ or ‘}‘ or ‘]‘), pop off the last 
+// element from the stack only if matches with the encountered closing bracket and 
+// keep iterating through the string. If the closing bracket does not match with 
+// the opening bracket placed on top of the stack, break out of the loop and return 
+// false because the parentheses in the string are not balanced.
+
+// If the stack is empty after completely iterating over the string, return true 
+// because the parentheses in the string are balanced and you have a valid string.
+
 const isBalanced = (input) => {
   
-  let stack = [];
-  // let bank = {
-  //   "(": ")",
-  //   "{": "}", 
-  //   "[": "]",
-  // }
+  let stack = new Stack()
+  let bank = {
+    "(": ")",
+    "{": "}", 
+    "[": "]",
+  }
+
+  // Input : {[]{()}}
 
   for(let i = 0; i < input.length; i++ ) {
-    let character = stack[stack .length - 1]
+
+    let character = stack.peek()
 
     if(input[i] === "(" || input[i] === "{" || input[i] === "[") {
       stack.push(input[i])
@@ -47,9 +39,10 @@ const isBalanced = (input) => {
       stack.pop();
     } else return false 
   } 
-  // if(stack.length !== 0) return false;
-  return stack.length ? false : true 
+ 
+  return stack.isEmpty() ? true : false 
 }
+
 
 // Input : {[]{()}}
 // Output : Balanced = true
