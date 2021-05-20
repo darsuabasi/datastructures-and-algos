@@ -1,0 +1,150 @@
+https://github.com/joinpursuit/Pursuit-Core-DSA/tree/master/lessons/binary_search/web;
+
+Harvard CS50 Lecture: https://www.youtube.com/watch?t=1290&v=jjqgP9dpD1k&feature=youtu.be;
+
+
+
+
+Let's say you had a phone book and you wanted to find someone's name. The person is "John Smith".
+    What do we know?
+        - The phone book is alphabetically ordered by first name
+        - The name starts with the letter "J"
+[If we follow a Linear Search algorithm we would start at the beginning of the book from "A" and keep,
+turning the pages until we reach "J". But more naturally you will probably start searching from the 
+middle of the book because "J" is closer to the middle.]
+
+[This is a very common searching problem and we can do better than Linear Search with O(n) run time. 
+Binary search accomplishes the same task with O(log n).]
+
+What conditions must be met to do binary search?
+    1. the collection MUST be able to access index in constant time O(1)
+    2. the collection MUST be sorted
+
+Image ex. https://github.com/joinpursuit/Pursuit-Core-DSA/blob/master/lessons/binary_search/assets/search-31.png
+
+STEPS 
+    1. find the middle index of the collection
+    2. check the element at the middle index; if it matches val youre looking for, return.. else keep going 
+    3. decide if you want to go left or right and repeat 2 [if the value you're looking for is higher than the middle
+        value then of course go right because remember that this collection is sorted... if the value you're looking 
+        for is less than the initital middle value then go left]
+            [Each step effectively removes half of the comparisons you would otherwise need to perform.]
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+[ITERATIVE APPROACH] 
+
+const binarySearch = (arr, value) => {
+  // low and high keep track of which part of the list we are 
+  // searching in
+  let low = 0;
+  let high = arr.length - 1
+
+  // While we haven't narrowed it down to one element
+  while (low <= high) {
+    // Calculate the middle point and check if its the element
+    // we are looking for
+    let mid = Math.floor((low + high) / 2)
+    let guess = arr[mid]
+
+    if (guess === value) {  // Found it
+      return mid
+    } else if (guess > value ) { // Guess was too high
+      high = mid - 1
+    }  else {
+      low = mid + 1 // Guess was too low
+    }
+  }
+  return null // Element was not found.
+}
+
+let nums =  [1, 3, 5, 7, 9]
+console.log(binarySearch(nums, 3))// -> 1
+console.log(binarySearch(nums, -1)) // -> null
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[RECURSIVE APPROACH]
+
+Passing low and high
+const binarySearchRec = (arr, target, low, high) => {
+  // Base case
+  if (low > high) return -1
+
+  let mid = Math.floor((low + high) / 2);
+  let guess = arr[mid]
+  if (guess === target) {
+    return mid
+  } else if (guess > target) { // guess too high, lower high to mid
+    return binarySearchRec(arr, target, low,  mid - 1);
+  } else {
+    return binarySearchRec(arr, target, mid + 1, high);
+  }
+}
+
+let nums =  [1, 3, 5, 7, 9]
+console.log(binarySearchRec(nums, 3, 0, nums.length - 1))// -> 1
+console.log(binarySearchRec(nums, 4, 0, nums.length -1)) // -> -1
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+SPLITTING ARRAYS IN HALF 
+    1. Find the middle index 
+        const binarySearch = (arr, value) => {
+            const middle = Math.floor(arr.length/2);  // Get Middle Index of the array
+        }
+
+    2. Check element of middle index 
+        const binarySearch = (arr, value) => {
+            const middle = Math.floor(arr.length/2);
+            if (value === arr[middle]) { // We want to compare the middle value with with the value we are looking for
+                return middle;
+            }
+        }
+
+    3. Check element of middle index 
+        const binarySearch = (arr, value) => {
+            const middle = Math.floor(arr.length/2);
+            
+            const left = arr.slice(0, middle); // Divide the array into left and right halves
+            const right = arr.slice(middle); // Divide the array into left and right halves
+
+            if (value === arr[middle]) {
+                return middle;
+            }
+
+            else if (value < arr[mid]) { // If the value is smaller than middle value
+                return binarySearch(left, value); // Search Left
+
+            } else { // If the value is greater than middle value, search Right
+                return middle + binarySearch(right, value); // We need to add middle to keep track of how many elements offset from the left
+            }
+        }
+            [If our middle value does not match then we move on to checking the left or right side of the array. If we check 
+            the right side of the array, we need to keep track of the middle index offset to get the correct index value in 
+            the original array.]
+
+    4. Base or Fail case 
+        const binarySearch = (arr, value) => {
+            console.log("Searching: "+arr);
+        
+            //basecase
+            if (arr.length <= 0 || value > arr[arr.length - 1]) { //if array has no elements OR if last element is smaller than value 
+                return -1;
+            }
+
+            const middle = Math.floor(arr.length/2);
+            const left = arr.slice(0, middle);
+            const right = arr.slice(middle);
+
+            if (value === arr[middle]) {
+                return middle;
+            }
+            else if (value < arr[middle]) {
+                return binarySearch(left, value);
+            }
+            else {
+                return middle + binarySearch(right, value);
+            }
+        }
+
