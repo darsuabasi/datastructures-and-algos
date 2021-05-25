@@ -1,5 +1,15 @@
 https://github.com/joinpursuit/Pursuit-Core-DSA/tree/master/lessons/Trees/web#breadth-first-searchtraversal-bfs
 
+https://github.com/raywenderlich/swift-algorithm-club/tree/master/Tree;
+https://medium.com/@amyhuajs/the-iterative-solution-to-inorder-tree-traversal-easily-explained-f25f09e5435b;
+https://levelup.gitconnected.com/how-to-traverse-a-tree-using-javascript-c9a79826e819;
+https://medium.com/swlh/traversing-trees-breadth-first-and-depth-first-searches-with-javascript-316f23c9fe8f;
+
+Algorithms: Graph Search, DFS and BFS: https://www.youtube.com/watch?v=zaBhtODEL0w
+
+[BFS + DFS = traversal algorithm]
+[BST = data structure]
+
 What is a tree?
 abstract data type that simulates a hierarchical tree structure, with a root 
 value and subtrees of children with a parent node, represented as a set of linked 
@@ -25,7 +35,7 @@ Components of a Tree
     - Edges (lines connecting the nodes)
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 BINARY TREE 
-    - a binary tree is a tree data structure in which each node has at most two children, 
+    - a binary tree is a tree [data structure] in which each node has at most two children, 
     which are referred to as the left child and the right child
 
     ex. 2 -> 7 + 5
@@ -214,6 +224,64 @@ const binarySearch = (root, value) => {
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
+Depth First Search/Traversal (DFS)
+    - There are three recursive and one iterative algorithms to traverse a tree 
+        (visit all the nodes) in a depth first fashion. The algorithms are structurally 
+        the same, however they will differ in what order the values are 'visited'. Lets 
+        see the three algorithms that are recursive and have the same base case.
+
+We'll use the tree that you built earlier:
+
+          (A)
+     (B)       (G)
+  (C)  (F)  (H)   (K)
+(D)(E)     (I)(J)
+--------------------------------------------------------
+In-Order [Given our tree, inOrderPrint would print the values in the order D, C, E, B, F, A, I, H, J, G, K. In-Order has the pattern of left, self(root), right.]
+    **IN-FIX TRAVERSAL 
+    - think of base case (needs to cover the scenario were the input is trivially small so that our program doesn't perform further calculation or crashes)
+    
+const inOrderPrint(root) {
+  if (root === null) return;
+  // ... rest of the code
+}
+
+    - NOTE that taking an entire tree as input is actually just a matter of taking in the root node. 
+        This is because the root node can access every other node through a path of edges.
+
+    Now the core of the algorithm is the following. Given the root of a tree, the steps for inOrderPrint are:
+
+    * print all nodes in the left subtree
+    * print root
+    * print all nodes in the right subtree
+
+const inOrderPrint(root) {
+  if (!root) return; //basecase 
+
+  inOrderPrint(root.left) //printing nodes to the left 
+  console.log(root.value) // printing value of root 
+  inOrderPrint(root.right) //printing nodes ot the right 
+}
+--------------------------------------------------------
+Pre-Order [Given our tree, preOrderPrint would print the values in the order: A, B, C, D, E, F, G, H, I, J, K. Pre-Order has the patten of self, left, right.]
+** PRE-FIX Traversal
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+Post-Order 
+    **POST-FIX TRAVERSAL
+        - print all nodes in the left subtree
+        - print all nodes in the right subtree
+        - print root
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -225,15 +293,9 @@ const binarySearch = (root, value) => {
 
 
 
-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-----------------------------------------------------------------------------------------------------------------------------------------------------
-
+**we'll always be looking to the left first(in terms of direction)
+    preorder----> look at the root before anything else 
+    inorder -----> look at left first, root, then look at right 
+    postorder ----> look at the left first, look at the right next, then look at root 
