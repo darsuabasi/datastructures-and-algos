@@ -27,7 +27,7 @@ const binarySearch = (nums, target) => {
     return -1
 };
 
-const rBinarySearch = (nums, target) => {
+const rBinarySearch = (nums, target, low = 0, high = nums.length - 1) => {
     let middle = Math.floor(low + (high - low) / 2);
 
     if(!nums.length || low > high) {
@@ -43,3 +43,23 @@ const rBinarySearch = (nums, target) => {
     }
 }
 
+
+console.log(binarySearch([-1,0,3,5,9,12], 9)) // 4
+console.log(binarySearch([-1,0,3,5,9,12], 2)) // -1
+
+
+console.log(rBinarySearch([-1,0,3,5,9,12], 9)) // 4
+console.log(rBinarySearch([-1,0,3,5,9,12], 2)) // -1
+
+
+
+
+// Example 1:
+// Input: nums = [-1,0,3,5,9,12], target = 9
+// Output: 4
+// Explanation: 9 exists in nums and its index is 4
+
+// Example 2:
+// Input: nums = [-1,0,3,5,9,12], target = 2
+// Output: -1
+// Explanation: 2 does not exist in nums so return -1
