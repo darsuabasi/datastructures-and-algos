@@ -1,6 +1,7 @@
 A linked list is a data structure // a recursive data structure 
 A node is the building block of a linked list [an abstract class that does two things: stores info and has reference for the next node]
-- each element is a node 
+- each element is a node
+
 
 
 ----------------------------------------------------------------------------------
