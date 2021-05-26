@@ -1,13 +1,22 @@
+arr of words... find if every word is typed with a single row of the keyboard 
+
 const findWords = (words) => {
     const row1 = new Set("qwertyuiop");
     const row2 = new Set("asdfghjkl");
     const row3 = new Set("zxcvbnm");
+
+    // row1: { 
+    //     q: 0
+
+
+    // }
 
     const res = [];
 
     const canBeTyped = (word, row) => {
            for (const char of word) {
            if (!row.has(char.toLowerCase())) return false;
+        // if (!row[char.toLowerCase()]) return false; if using an object 
        }
        return true;
     }
@@ -18,6 +27,9 @@ const findWords = (words) => {
     
     return res;
 };
+
+// alaska
+// qwertyuiop
 
 
 // const LETTER_TO_ROW = {
